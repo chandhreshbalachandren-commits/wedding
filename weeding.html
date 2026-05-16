@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"/>
+  <title>Vignesh ♡ Pavithra — Wedding 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Marcellus&family=Tangerine:wght@400;700&family=Jost:ital,wght@0,200;0,300;0,400;1,300&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    :root{
+      --ivory:#FDFAF5;--white:#FFFFFF;--cream:#F7F0E6;--parchment:#EFE6D5;
+      --gold:#B8892A;--gold-l:#D4A84B;--gold-p:#F0D98A;--gold-t:rgba(184,137,42,.18);
+      --blush:#E8A5B0;--blush-d:#C4697A;--blush-p:#F7D8DE;
+      --rose:#D4829A;--maroon:#8B1C30;--sage:#8FAF84;
+      --charcoal:#2C2218;--taupe:#8A7968;
+      --text:#3A2E24;--text-s:#7A6C5E;
+      --sg:rgba(184,137,42,.14);--sb:rgba(196,105,122,.1);
+    }
+    body{font-family:'Jost',sans-serif;background:var(--ivory);color:var(--text);overflow-x:hidden;min-height:100vh}
+
+    /* ── LOADER ── */
+    #loader{position:fixed;inset:0;z-index:9999;background:var(--ivory);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .9s ease,visibility .9s ease}
+    #loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+    .ld-om{font-size:3.8rem;color:var(--gold);animation:om-b 2s ease-in-out infinite;filter:drop-shadow(0 0 14px rgba(184,137,42,.3))}
+    @keyframes om-b{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+    .ld-name{font-family:'Tangerine',cursive;font-size:3rem;font-weight:700;color:var(--maroon);margin-top:.6rem;opacity:0;animation:fu .9s ease .5s forwards}
+    .ld-bar{width:180px;height:2px;background:var(--parchment);border-radius:2px;margin-top:1.1rem;overflow:hidden}
+    .ld-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));animation:lp 2.7s ease forwards}
+    @keyframes lp{to{width:100%}}
+
+    /* ── CANVAS ── */
+    #bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.45}
+
+    /* ── PAGE ── */
+    .page{position:relative;z-index:1;max-width:480px;margin:0 auto;padding-bottom:5rem}
+
+    /* ── HERO ── */
+    .hero{
+      position:relative;min-height:100svh;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      padding:3rem 2rem 5rem;
+      background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(232,165,176,.18) 0%,transparent 70%),
+                 radial-gradient(ellipse 60% 40% at 100% 100%,rgba(184,137,42,.07) 0%,transparent 60%),var(--ivory);
+      overflow:hidden;
+    }
+    .hero-rule{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,transparent 0%,var(--gold-l) 30%,var(--gold-p) 50%,var(--gold-l) 70%,transparent 100%)}
+
+    /* corner florets */
+    .cf{position:absolute;pointer-events:none;opacity:.55}
+    .cf.tl{top:0;left:0}.cf.tr{top:0;right:0;transform:scaleX(-1)}
+    .cf.bl{bottom:0;left:0;transform:scaleY(-1)}.cf.br{bottom:0;right:0;transform:scale(-1)}
+
+    .h-bless{font-family:'IM Fell English',serif;font-style:italic;font-size:.82rem;letter-spacing:.12em;color:var(--taupe);text-align:center;margin-bottom:1.2rem;opacity:0;animation:fu .9s ease .3s forwards}
+    .h-invite{font-family:'Jost',sans-serif;font-weight:200;font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;color:var(--blush-d);text-align:center;margin-bottom:.4rem;opacity:0;animation:fu .9s ease .5s forwards}
+    .h-title{font-family:'Italiana',serif;font-size:clamp(3.2rem,13vw,5rem);color:var(--maroon);text-align:center;line-height:1.05;letter-spacing:.02em;text-shadow:0 2px 20px rgba(139,28,48,.1);opacity:0;animation:fu 1s ease .65s forwards}
+    .h-title span{display:block;font-family:'Tangerine',cursive;font-weight:400;font-size:clamp(1.8rem,7vw,2.5rem);color:var(--blush-d);letter-spacing:.05em;margin-top:.1rem}
+
+    .thin-rule{width:70%;height:1px;margin:.9rem auto;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;animation:fu .8s ease .85s forwards}
+
+    /* rings divider */
+    .rings-w{display:flex;align-items:center;justify-content:center;gap:.5rem;margin:.5rem 0;opacity:0;animation:fu .8s ease 1s forwards}
+    .rings-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-l))}
+    .rings-line.r{background:linear-gradient(90deg,var(--gold-l),transparent)}
+    .ring-icon{width:42px;height:26px;flex-shrink:0}
+
+    /* names */
+    .groom-b,.bride-b{text-align:center;opacity:0}
+    .groom-b{animation:fu 1s ease 1.1s forwards}
+    .bride-b{animation:fu 1s ease 1.3s forwards}
+    .ns{font-family:'Tangerine',cursive;font-weight:700;font-size:clamp(3.4rem,13vw,5rem);line-height:1;letter-spacing:.02em}
+    .ns.g{color:var(--maroon);text-shadow:0 0 24px rgba(139,28,48,.14)}
+    .ns.b{color:var(--blush-d);text-shadow:0 0 24px rgba(196,105,122,.18)}
+    .nr{font-family:'Jost',sans-serif;font-weight:300;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--taupe);margin-top:.1rem}
+    .no{font-family:'IM Fell English',serif;font-style:italic;font-size:.74rem;color:var(--text-s);margin-top:.14rem;line-height:1.4}
+
+    /* amp */
+    .amp-w{display:flex;align-items:center;justify-content:center;gap:.6rem;margin:.45rem 0;opacity:0;animation:fu .8s ease 1.2s forwards}
+    .amp-ln{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--blush))}
+    .amp-ln.r{background:linear-gradient(90deg,var(--blush),transparent)}
+    .amp-dots{display:flex;gap:3px}
+    .amp-dots span{display:block;width:5px;height:5px;border-radius:50%;background:var(--blush);animation:ap 2s ease-in-out infinite}
+    .amp-dots span:nth-child(2){background:var(--gold);animation-delay:.4s}
+    .amp-dots span:nth-child(3){background:var(--blush);animation-delay:.8s}
+    @keyframes ap{0%,100%{transform:scale(1)}50%{transform:scale(1.4)}}
+
+    /* date */
+    .date-pill{display:inline-flex;align-items:stretch;border:1.5px solid var(--gold-l);border-radius:8px;overflow:hidden;margin:1.4rem auto .25rem;box-shadow:0 4px 22px var(--sg);opacity:0;animation:fu 1s ease 1.5s forwards}
+    .dp{padding:.55rem .9rem;text-align:center;background:var(--white)}
+    .dp+.dp{border-left:1px solid rgba(184,137,42,.22)}
+    .dp.day,.dp.mon{font-family:'Jost',sans-serif;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe)}
+    .dp.num{font-family:'Italiana',serif;font-size:2.6rem;line-height:1;color:var(--maroon);padding:.28rem 1.1rem;background:var(--cream);letter-spacing:.02em}
+    .dp.yr{font-family:'Italiana',serif;font-size:1.3rem;color:var(--gold);display:flex;align-items:center;padding:.3rem 1rem;border-left:1px solid rgba(184,137,42,.22)}
+    .date-sub{font-family:'IM Fell English',serif;font-style:italic;font-size:.72rem;color:var(--taupe);text-align:center;opacity:0;animation:fu .8s ease 1.7s forwards}
+
+    /* scroll hint */
+    .sh{position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;opacity:0;animation:fu .8s ease 2.5s forwards}
+    .sh p{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe)}
+    .sh-chev{width:18px;height:18px;border-right:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);transform:rotate(45deg);animation:cb 1.6s ease infinite}
+    @keyframes cb{0%,100%{transform:rotate(45deg) translateY(0);opacity:.5}50%{transform:rotate(45deg) translateY(5px);opacity:1}}
+
+    /* ── SECTION ── */
+    .section{padding:2.8rem 1.6rem}
+    .sec-lbl{display:block;font-family:'Jost',sans-serif;font-weight:300;font-size:.58rem;letter-spacing:.4em;text-transform:uppercase;color:var(--blush-d);text-align:center;margin-bottom:.35rem}
+    .sec-ttl{font-family:'Italiana',serif;font-size:clamp(2rem,8vw,2.8rem);color:var(--maroon);text-align:center;line-height:1.05;letter-spacing:.02em}
+    .sec-rule{display:flex;align-items:center;justify-content:center;gap:.6rem;margin:.7rem auto;width:75%}
+    .sec-rule::before,.sec-rule::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(184,137,42,.4))}
+    .sec-rule::after{background:linear-gradient(90deg,rgba(184,137,42,.4),transparent)}
+    .srg{width:7px;height:7px;background:var(--gold-l);border-radius:50%;flex-shrink:0}
+
+    /* ── CARD ── */
+    .card{background:var(--white);border:1px solid rgba(184,137,42,.2);border-radius:18px;padding:1.8rem 1.5rem;box-shadow:0 5px 28px rgba(60,40,20,.07),0 1px 0 rgba(184,137,42,.07) inset;position:relative;overflow:hidden}
+    .card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold-l),transparent)}
+    .card.blush{background:linear-gradient(145deg,#fff9f9,var(--white));border-color:rgba(196,105,122,.2)}
+    .card.blush::before{background:linear-gradient(90deg,transparent,var(--blush),transparent)}
+
+    /* ── COUNTDOWN ── */
+    .cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.65rem;margin-top:1.1rem}
+    .cd-cell{text-align:center;padding:.85rem .3rem;background:var(--cream);border:1px solid rgba(184,137,42,.18);border-radius:12px;position:relative;overflow:hidden}
+    .cd-cell::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold-l),transparent)}
+    .cd-n{font-family:'Italiana',serif;font-size:2.1rem;line-height:1;color:var(--maroon);display:block;transition:transform .25s ease}
+    .cd-l{font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:var(--taupe);margin-top:.22rem;display:block}
+
+    /* ── PROFILES ── */
+    .profile{display:flex;gap:1.1rem;align-items:flex-start}
+    .av{width:68px;height:68px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Tangerine',cursive;font-size:2rem;font-weight:700}
+    .av.g{background:linear-gradient(135deg,var(--maroon),#b0293e);color:var(--gold-p);border:2.5px solid var(--gold-l);box-shadow:0 4px 16px rgba(139,28,48,.2)}
+    .av.b{background:linear-gradient(135deg,var(--blush-d),var(--blush));color:#fff;border:2.5px solid var(--blush);box-shadow:0 4px 16px rgba(196,105,122,.22)}
+    .pi{flex:1}
+    .pn{font-family:'Tangerine',cursive;font-weight:700;font-size:2rem;line-height:1;margin-bottom:.12rem}
+    .pn.g{color:var(--maroon)}.pn.b{color:var(--blush-d)}
+    .pr{font-size:.61rem;letter-spacing:.18em;text-transform:uppercase;color:var(--taupe);font-weight:400;margin-bottom:.28rem}
+    .pd{font-family:'IM Fell English',serif;font-style:italic;font-size:.77rem;color:var(--text-s);line-height:1.5}
+
+    /* ── EVENTS ── */
+    .ev-tag{display:inline-flex;align-items:center;gap:.32rem;padding:.26rem .72rem;border-radius:20px;font-size:.61rem;letter-spacing:.15em;text-transform:uppercase;font-weight:400;margin-bottom:.8rem}
+    .ev-tag.c{background:rgba(139,28,48,.07);color:var(--maroon);border:1px solid rgba(139,28,48,.18)}
+    .ev-tag.rc{background:rgba(184,137,42,.08);color:var(--gold);border:1px solid rgba(184,137,42,.25)}
+    .ev-ttl{font-family:'Italiana',serif;font-size:1.65rem;color:var(--maroon);margin-bottom:.75rem;line-height:1.1}
+    .ev-row{display:flex;align-items:flex-start;gap:.65rem;margin-bottom:.65rem}
+    .ev-ic{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--cream);border:1px solid rgba(184,137,42,.25);margin-top:.08rem}
+    .ev-tm{font-family:'Marcellus',serif;font-size:.9rem;color:var(--text)}
+    .ev-ts{font-size:.68rem;color:var(--text-s);font-style:italic;margin-top:.08rem}
+    .mlink{display:inline-flex;align-items:center;gap:.42rem;margin-top:.85rem;padding:.42rem .9rem;border:1px solid rgba(184,137,42,.35);border-radius:20px;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;background:rgba(184,137,42,.04);transition:all .25s ease}
+    .mlink:hover{background:rgba(184,137,42,.12);border-color:var(--gold)}
+
+    /* ── TIMELINE ── */
+    .tl{padding-left:1.4rem;border-left:1.5px solid rgba(184,137,42,.2)}
+    .tli{position:relative;margin-bottom:1.55rem}
+    .tli:last-child{margin-bottom:0}
+    .tld{position:absolute;left:-1.85rem;top:.24rem;width:10px;height:10px;border-radius:50%;border:2px solid var(--white)}
+    .tlt{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.12rem;font-weight:400}
+    .tln{font-family:'Marcellus',serif;font-size:.93rem;color:var(--text)}
+    .tlp{font-size:.71rem;color:var(--text-s);font-style:italic;margin-top:.08rem}
+
+    /* ── WISH ── */
+    .wish{text-align:center;padding:2.2rem 1.8rem;background:linear-gradient(145deg,var(--blush-p) 0%,var(--white) 60%,var(--cream) 100%);border:1px solid rgba(196,105,122,.2);border-radius:20px;position:relative;overflow:hidden}
+    .wish::before{content:'"';font-family:'Tangerine',cursive;font-size:8rem;line-height:1;color:rgba(196,105,122,.1);position:absolute;top:-1rem;left:.4rem}
+    .wq{font-family:'IM Fell English',serif;font-style:italic;font-size:1.1rem;color:var(--text);line-height:1.7;position:relative}
+    .ws{font-family:'Tangerine',cursive;font-weight:700;font-size:2rem;color:var(--blush-d);margin-top:.7rem;display:block}
+    .wh{display:flex;justify-content:center;gap:.4rem;margin-top:.7rem}
+    .wh span{font-size:1.1rem;animation:hb 1.6s ease-in-out infinite}
+    .wh span:nth-child(2){animation-delay:.3s}.wh span:nth-child(3){animation-delay:.6s}
+    @keyframes hb{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+
+    /* ── TORAN ── */
+    .toran{display:flex;justify-content:center;gap:3px;padding:.6rem 0;overflow:hidden}
+    .tm{width:14px;height:22px;background:linear-gradient(180deg,var(--sage) 0%,#5c8a62 100%);border-radius:50% 50% 40% 40%;position:relative}
+    .tm::after{content:'';position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);width:5px;height:5px;background:var(--gold-l);border-radius:50%}
+    .tm:nth-child(odd){animation:s1 3.5s ease-in-out infinite}
+    .tm:nth-child(even){animation:s2 3.5s ease-in-out infinite}
+    @keyframes s1{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+    @keyframes s2{0%,100%{transform:rotate(6deg)}50%{transform:rotate(-6deg)}}
+
+    /* ── ORNAMENT ── */
+    .orn{display:flex;align-items:center;justify-content:center;gap:.6rem;padding:1.3rem 1.6rem;color:rgba(184,137,42,.4);font-size:.9rem}
+    .orn::before,.orn::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(184,137,42,.22))}
+    .orn::after{background:linear-gradient(90deg,rgba(184,137,42,.22),transparent)}
+
+    /* ── SHARE ── */
+    .share-btn{display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;padding:1rem;border-radius:14px;border:none;cursor:pointer;font-family:'Marcellus',serif;font-size:1rem;letter-spacing:.04em;background:linear-gradient(135deg,var(--maroon) 0%,#b0293e 100%);color:var(--gold-p);box-shadow:0 6px 22px rgba(139,28,48,.22);transition:transform .25s ease,box-shadow .25s ease}
+    .share-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(139,28,48,.28)}
+    .mgrid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:.75rem}
+
+    /* ── FOOTER ── */
+    .footer{text-align:center;padding:2.5rem 1.6rem 3.5rem;border-top:1px solid rgba(184,137,42,.18);background:linear-gradient(180deg,var(--ivory) 0%,var(--cream) 100%)}
+    .fn{font-family:'Tangerine',cursive;font-weight:700;font-size:3rem;color:var(--maroon)}
+    .fd{font-family:'Jost',sans-serif;font-weight:200;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--taupe);margin-top:.2rem}
+    .fp{font-size:.58rem;color:var(--taupe);opacity:.45;margin-top:1.4rem;font-style:italic}
+
+    /* ── SCROLL TOP ── */
+    #st{position:fixed;bottom:2rem;right:1.4rem;z-index:100;width:42px;height:42px;border-radius:50%;background:var(--white);border:1.5px solid var(--gold-l);box-shadow:0 4px 16px rgba(60,40,20,.12);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:translateY(12px);transition:all .3s ease}
+    #st.show{opacity:1;transform:translateY(0)}
+
+    /* ── ANIMATIONS ── */
+    @keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fi{from{opacity:0}to{opacity:1}}
+    .reveal{opacity:0;transform:translateY(34px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.on{opacity:1;transform:translateY(0)}
+    .rl{opacity:0;transform:translateX(-34px);transition:opacity .7s ease,transform .7s ease}
+    .rl.on{opacity:1;transform:translateX(0)}
+    .rr{opacity:0;transform:translateX(34px);transition:opacity .7s ease,transform .7s ease}
+    .rr.on{opacity:1;transform:translateX(0)}
+    .rs{opacity:0;transform:scale(.9);transition:opacity .7s ease,transform .7s ease}
+    .rs.on{opacity:1;transform:scale(1)}
+    .d1{transition-delay:.07s}.d2{transition-delay:.17s}.d3{transition-delay:.27s}.d4{transition-delay:.37s}.d5{transition-delay:.47s}
+
+    /* ── SPARKLE ── */
+    .sp{position:fixed;pointer-events:none;z-index:9000;font-size:1rem;animation:spa .65s ease forwards}
+    @keyframes spa{0%{opacity:0;transform:scale(0) rotate(0deg) translateY(0)}50%{opacity:1;transform:scale(1) rotate(180deg) translateY(-14px)}100%{opacity:0;transform:scale(.3) rotate(360deg) translateY(-28px)}}
+
+    /* ── PETALS ── */
+    .petal{position:absolute;pointer-events:none;z-index:0;opacity:0;animation:pf linear infinite}
+    @keyframes pf{0%{transform:translateY(-10px) rotate(0deg);opacity:0}8%{opacity:.6}90%{opacity:.15}100%{transform:translateY(105vh) rotate(540deg) translateX(35px);opacity:0}}
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-om">ॐ</div>
+  <div class="ld-name">Vignesh ♡ Pavithra</div>
+  <div class="ld-bar"><div class="ld-fill"></div></div>
+</div>
+
+<canvas id="bg-canvas"></canvas>
+<div id="st" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B8892A" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</div>
+
+<div class="page">
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero">
+    <div class="hero-rule"></div>
+
+    <!-- corner florals -->
+    <svg class="cf tl" width="120" height="120" viewBox="0 0 120 120">
+      <ellipse cx="22" cy="22" rx="20" ry="11" fill="rgba(232,165,176,.32)" transform="rotate(-30 22 22)"/>
+      <ellipse cx="48" cy="12" rx="16" ry="8" fill="rgba(184,137,42,.18)" transform="rotate(12 48 12)"/>
+      <ellipse cx="12" cy="50" rx="15" ry="7" fill="rgba(232,165,176,.22)" transform="rotate(-50 12 50)"/>
+      <ellipse cx="35" cy="38" rx="10" ry="5" fill="rgba(143,175,132,.2)" transform="rotate(-20 35 38)"/>
+      <circle cx="30" cy="30" r="5" fill="rgba(196,105,122,.28)"/>
+      <circle cx="55" cy="18" r="3" fill="rgba(184,137,42,.2)"/>
+    </svg>
+    <svg class="cf tr" width="120" height="120" viewBox="0 0 120 120">
+      <ellipse cx="22" cy="22" rx="20" ry="11" fill="rgba(232,165,176,.32)" transform="rotate(-30 22 22)"/>
+      <ellipse cx="48" cy="12" rx="16" ry="8" fill="rgba(184,137,42,.18)" transform="rotate(12 48 12)"/>
+      <ellipse cx="12" cy="50" rx="15" ry="7" fill="rgba(232,165,176,.22)" transform="rotate(-50 12 50)"/>
+      <circle cx="30" cy="30" r="5" fill="rgba(196,105,122,.28)"/>
+    </svg>
+    <svg class="cf bl" width="120" height="120" viewBox="0 0 120 120">
+      <ellipse cx="22" cy="22" rx="20" ry="11" fill="rgba(184,137,42,.18)" transform="rotate(-30 22 22)"/>
+      <ellipse cx="48" cy="12" rx="16" ry="8" fill="rgba(232,165,176,.28)" transform="rotate(12 48 12)"/>
+      <ellipse cx="12" cy="50" rx="15" ry="7" fill="rgba(143,175,132,.22)" transform="rotate(-50 12 50)"/>
+      <circle cx="30" cy="30" r="5" fill="rgba(184,137,42,.22)"/>
+    </svg>
+    <svg class="cf br" width="120" height="120" viewBox="0 0 120 120">
+      <ellipse cx="22" cy="22" rx="20" ry="11" fill="rgba(184,137,42,.18)" transform="rotate(-30 22 22)"/>
+      <ellipse cx="48" cy="12" rx="16" ry="8" fill="rgba(232,165,176,.28)" transform="rotate(12 48 12)"/>
+      <ellipse cx="12" cy="50" rx="15" ry="7" fill="rgba(143,175,132,.22)" transform="rotate(-50 12 50)"/>
+      <circle cx="30" cy="30" r="5" fill="rgba(184,137,42,.22)"/>
+    </svg>
+
+    <p class="h-bless">॥ Śrī Gaṇeśāya Namaḥ ॥</p>
+    <p class="h-invite">We joyfully invite you to celebrate our</p>
+
+    <h1 class="h-title">Wedding<span>&amp; Reception</span></h1>
+    <div class="thin-rule"></div>
+
+    <!-- Groom -->
+    <div class="groom-b">
+      <div class="ns g">K. Vignesh</div>
+      <div class="nr">Merchant Navy</div>
+      <div class="no">Neptune Pacific Direct Line Pvt., Ltd., Singapore</div>
+    </div>
+
+    <!-- Rings divider -->
+    <div class="rings-w">
+      <div class="rings-line"></div>
+      <svg class="ring-icon" viewBox="0 0 42 26" fill="none">
+        <circle cx="15" cy="13" r="11" stroke="#B8892A" stroke-width="2"/>
+        <circle cx="27" cy="13" r="11" stroke="#C4697A" stroke-width="2"/>
+      </svg>
+      <div class="rings-line r"></div>
+    </div>
+
+    <!-- Bride -->
+    <div class="bride-b">
+      <div class="ns b">B. Pavithra</div>
+      <div class="nr" style="color:var(--blush-d)">B.Com., (CS) MBA.</div>
+      <div class="no">HR, Talent Acquisition @ Kamlax Global Technologies Pvt. Ltd.</div>
+    </div>
+
+    <!-- amp dots -->
+    <div class="amp-w">
+      <div class="amp-ln"></div>
+      <div class="amp-dots"><span></span><span></span><span></span></div>
+      <div class="amp-ln r"></div>
+    </div>
+
+    <!-- Date -->
+    <div class="date-pill">
+      <div class="dp day">Thu</div>
+      <div class="dp num">04</div>
+      <div class="dp mon">June</div>
+      <div class="dp yr">2026</div>
+    </div>
+    <p class="date-sub">An Auspicious Day · Puducherry, India</p>
+
+    <div class="sh">
+      <p>See Details</p>
+      <div class="sh-chev"></div>
+    </div>
+  </section>
+
+  <!-- toran -->
+  <div class="toran reveal">
+    <div class="tm"></div><div class="tm"></div><div class="tm"></div><div class="tm"></div>
+    <div class="tm"></div><div class="tm"></div><div class="tm"></div><div class="tm"></div>
+    <div class="tm"></div><div class="tm"></div><div class="tm"></div><div class="tm"></div>
+    <div class="tm"></div><div class="tm"></div><div class="tm"></div><div class="tm"></div>
+    <div class="tm"></div><div class="tm"></div><div class="tm"></div><div class="tm"></div>
+  </div>
+
+  <!-- ═══ COUNTDOWN ═══ -->
+  <section class="section">
+    <div class="reveal">
+      <span class="sec-lbl">Counting down to the big day</span>
+      <div class="sec-ttl">Days Until We Wed</div>
+      <div class="sec-rule"><div class="srg"></div></div>
+    </div>
+    <div class="card reveal d1">
+      <div class="cd-grid">
+        <div class="cd-cell"><span class="cd-n" id="cd-d">--</span><span class="cd-l">Days</span></div>
+        <div class="cd-cell"><span class="cd-n" id="cd-h">--</span><span class="cd-l">Hours</span></div>
+        <div class="cd-cell"><span class="cd-n" id="cd-m">--</span><span class="cd-l">Mins</span></div>
+        <div class="cd-cell"><span class="cd-n" id="cd-s">--</span><span class="cd-l">Secs</span></div>
+      </div>
+      <p style="text-align:center;margin-top:.9rem;font-family:'IM Fell English',serif;font-style:italic;font-size:.8rem;color:var(--taupe)">Until we say "I Do" in Puducherry</p>
+    </div>
+  </section>
+
+  <!-- ═══ COUPLE ═══ -->
+  <section class="section" style="padding-top:0">
+    <div class="reveal">
+      <span class="sec-lbl">The couple</span>
+      <div class="sec-ttl">Two Souls, One Journey</div>
+      <div class="sec-rule"><div class="srg"></div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <div class="card rl d1">
+        <div class="profile">
+          <div class="av g">V</div>
+          <div class="pi">
+            <div class="pn g">K. Vignesh</div>
+            <div class="pr">🧿 Groom · Merchant Navy</div>
+            <div class="pd">Neptune Pacific Direct Line Pvt., Ltd., Singapore.<br/>Sailing seas, anchoring hearts.</div>
+          </div>
+        </div>
+      </div>
+      <div class="card blush rr d2">
+        <div class="profile">
+          <div class="av b">P</div>
+          <div class="pi">
+            <div class="pn b">B. Pavithra</div>
+            <div class="pr" style="color:var(--blush-d)">🌸 Bride · HR Professional</div>
+            <div class="pd">B.Com., (CS) MBA.<br/>Kamlax Global Technologies Pvt. Ltd.<br/>Talent Acquisition — leading with heart.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="orn reveal">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- ═══ EVENTS ═══ -->
+  <section class="section" style="padding-top:0">
+    <div class="reveal">
+      <span class="sec-lbl">The sacred events</span>
+      <div class="sec-ttl">Two Celebrations</div>
+      <div class="sec-rule"><div class="srg"></div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1.1rem">
+
+      <!-- Ceremony -->
+      <div class="card reveal d1">
+        <div class="ev-tag c">🪔 &nbsp;Wedding Ceremony</div>
+        <div class="ev-ttl">Sacred Vows</div>
+        <div class="ev-row">
+          <div class="ev-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#B8892A" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div><div class="ev-tm">7:30 AM – 9:00 AM</div><div class="ev-ts">Thursday, 4th June 2026</div></div>
+        </div>
+        <div class="ev-row">
+          <div class="ev-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#B8892A" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="ev-tm">Shree Sengazhuneer Amman Temple</div><div class="ev-ts">Veerampatinam, Puducherry</div></div>
+        </div>
+        <a class="mlink" href="https://maps.google.com/?q=Shree+Sengazhuneer+Amman+Temple+Veerampatinam+Puducherry" target="_blank">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Open in Maps
+        </a>
+      </div>
+
+      <!-- Reception -->
+      <div class="card blush reveal d2">
+        <div class="ev-tag rc">🌹 &nbsp;Reception</div>
+        <div class="ev-ttl" style="color:var(--blush-d)">Grand Celebration</div>
+        <div class="ev-row">
+          <div class="ev-ic" style="border-color:rgba(196,105,122,.25)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C4697A" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div><div class="ev-tm">7:30 PM – 9:30 PM</div><div class="ev-ts">Thursday, 4th June 2026</div></div>
+        </div>
+        <div class="ev-row">
+          <div class="ev-ic" style="border-color:rgba(196,105,122,.25)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C4697A" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="ev-tm">Boobalan Thangamani Tirumana Mandapam</div><div class="ev-ts">Ariyankuppam, Puducherry</div></div>
+        </div>
+        <a class="mlink" href="https://maps.google.com/?q=Boobalan+Thangamani+Tirumana+Mandapam+Ariyankuppam+Puducherry" target="_blank" style="color:var(--blush-d);border-color:rgba(196,105,122,.35)">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Open in Maps
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TIMELINE ═══ -->
+  <section class="section" style="padding-top:0">
+    <div class="reveal">
+      <span class="sec-lbl">Schedule of the day</span>
+      <div class="sec-ttl">Day's Journey</div>
+      <div class="sec-rule"><div class="srg"></div></div>
+    </div>
+    <div class="card reveal d1" style="padding:1.8rem 1.5rem 1.8rem 2rem">
+      <div class="tl">
+        <div class="tli reveal d1">
+          <div class="tld" style="background:var(--maroon)"></div>
+          <div class="tlt" style="color:var(--maroon)">7:30 AM</div>
+          <div class="tln">Wedding Ceremony Begins</div>
+          <div class="tlp">Shree Sengazhuneer Amman Temple, Veerampatinam</div>
+        </div>
+        <div class="tli reveal d2">
+          <div class="tld" style="background:var(--blush-d)"></div>
+          <div class="tlt" style="color:var(--blush-d)">9:00 AM</div>
+          <div class="tln">Sacred Rituals Complete</div>
+          <div class="tlp">Blessings from elders &amp; beloved family</div>
+        </div>
+        <div class="tli reveal d3">
+          <div class="tld" style="background:var(--sage)"></div>
+          <div class="tlt" style="color:var(--sage)">7:30 PM</div>
+          <div class="tln">Grand Reception Begins</div>
+          <div class="tlp">Boobalan Thangamani Tirumana Mandapam, Ariyankuppam</div>
+        </div>
+        <div class="tli reveal d4">
+          <div class="tld" style="background:var(--gold)"></div>
+          <div class="tlt" style="color:var(--gold)">9:30 PM</div>
+          <div class="tln">Celebrations Conclude</div>
+          <div class="tlp">Dinner, blessings &amp; fond farewells</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="orn reveal">🌸 &nbsp; 🌸 &nbsp; 🌸</div>
+
+  <!-- ═══ WISH ═══ -->
+  <section class="section" style="padding-top:0">
+    <div class="wish rs">
+      <div style="font-size:1.9rem;margin-bottom:.4rem">ॐ</div>
+      <p class="wq">We look forward to Celebrating<br/>this Special day with you.</p>
+      <span class="ws">Vignesh &amp; Pavithra</span>
+      <div class="wh"><span>❤️</span><span>❤️</span><span>❤️</span></div>
+    </div>
+  </section>
+
+  <!-- ═══ BLESSINGS ═══ -->
+  <section class="section" style="padding-top:0">
+    <div class="reveal">
+      <span class="sec-lbl">A message for our guests</span>
+      <div class="sec-ttl">With Love &amp; Blessings</div>
+      <div class="sec-rule"><div class="srg"></div></div>
+    </div>
+    <div class="card reveal d1" style="text-align:center">
+      <p style="font-family:'IM Fell English',serif;font-style:italic;font-size:.95rem;color:var(--text-s);line-height:1.9">
+        With the blessings of our families,<br/>
+        we invite you to be part of this<br/>
+        sacred union of two souls.<br/><br/>
+        Your presence will be the most<br/>
+        precious gift you can give us.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ SHARE ═══ -->
+  <section class="section" style="padding-top:0">
+    <div class="reveal">
+      <span class="sec-lbl">Spread the joy</span>
+      <div class="sec-ttl">Share &amp; Celebrate</div>
+      <div class="sec-rule"><div class="srg"></div></div>
+    </div>
+    <div class="reveal d1">
+      <button class="share-btn" onclick="shareInvite()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Share This Invitation
+      </button>
+      <div class="mgrid">
+        <a href="https://maps.google.com/?q=Shree+Sengazhuneer+Amman+Temple+Veerampatinam+Puducherry" target="_blank" class="mlink" style="justify-content:center">🪔 Ceremony</a>
+        <a href="https://maps.google.com/?q=Boobalan+Thangamani+Tirumana+Mandapam+Ariyankuppam+Puducherry" target="_blank" class="mlink" style="justify-content:center;color:var(--blush-d);border-color:rgba(196,105,122,.35)">🌹 Reception</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer reveal">
+    <div class="fn">Vignesh ♡ Pavithra</div>
+    <div class="fd">4th June 2026 · Puducherry, India</div>
+    <div class="orn" style="padding:.7rem 0">✦ &nbsp; ✦ &nbsp; ✦</div>
+    <p style="font-family:'IM Fell English',serif;font-style:italic;font-size:.85rem;color:var(--taupe)">"Two hearts, one soul, a lifetime of love"</p>
+    <div class="fp">Sapthagiri Printers, Pudupet, Puducherry · 8443074958</div>
+  </footer>
+
+</div><!-- /.page -->
+
+<script>
+/* LOADER */
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),2800));
+
+/* CANVAS — soft warm blobs */
+(function(){
+  const c=document.getElementById('bg-canvas'),ctx=c.getContext('2d');
+  let W,H,pts=[],t=0;
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight}
+  resize();window.addEventListener('resize',resize);
+  const COLS=['rgba(232,165,176,','rgba(184,137,42,','rgba(212,130,154,','rgba(143,175,132,','rgba(240,217,138,'];
+  function mk(){return{x:Math.random()*W,y:Math.random()*H,r:Math.random()*70+25,a:Math.random()*.07+.018,col:COLS[Math.floor(Math.random()*COLS.length)],vx:(Math.random()-.5)*.16,vy:(Math.random()-.5)*.11,ph:Math.random()*Math.PI*2}}
+  for(let i=0;i<20;i++)pts.push(mk());
+  function draw(){
+    ctx.clearRect(0,0,W,H);t+=.004;
+    pts.forEach(p=>{
+      p.x+=p.vx+Math.sin(t+p.ph)*.22;p.y+=p.vy+Math.cos(t+p.ph)*.16;
+      if(p.x<-p.r*2)p.x=W+p.r;if(p.x>W+p.r*2)p.x=-p.r;
+      if(p.y<-p.r*2)p.y=H+p.r;if(p.y>H+p.r*2)p.y=-p.r;
+      const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r);
+      g.addColorStop(0,p.col+p.a+')');g.addColorStop(1,p.col+'0)');
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* PETALS */
+(function(){
+  const hero=document.querySelector('.hero');
+  const sym=['❁','✿','❀','✾','❋'];
+  const col=['#E8A5B0','#D4A84B','#F0B8CA','#F0D98A','#C4697A','#8FAF84'];
+  function mk(){
+    const d=document.createElement('div');d.className='petal';
+    d.textContent=sym[Math.floor(Math.random()*sym.length)];
+    Object.assign(d.style,{left:Math.random()*100+'%',top:'-16px',fontSize:Math.random()*9+7+'px',color:col[Math.floor(Math.random()*col.length)],animationDuration:Math.random()*9+7+'s',animationDelay:Math.random()*4+'s'});
+    hero.appendChild(d);setTimeout(()=>d.remove(),14000);
+  }
+  for(let i=0;i<12;i++)mk();setInterval(mk,1100);
+})();
+
+/* COUNTDOWN */
+(function(){
+  const target=new Date('2026-06-04T07:30:00+05:30');
+  const ids=['cd-d','cd-h','cd-m','cd-s'];const pad=n=>String(n).padStart(2,'0');
+  function tick(){
+    const diff=target-new Date();
+    if(diff<=0){ids.forEach(id=>document.getElementById(id).textContent='00');return}
+    const v=[Math.floor(diff/86400000),Math.floor(diff%86400000/3600000),Math.floor(diff%3600000/60000),Math.floor(diff%60000/1000)];
+    ids.forEach((id,i)=>{const el=document.getElementById(id);const vv=pad(v[i]);if(el.textContent!==vv){el.style.transform='translateY(-5px)';el.textContent=vv;setTimeout(()=>el.style.transform='',200)}});
+  }
+  tick();setInterval(tick,1000);
+})();
+
+/* INTERSECTION OBSERVER */
+(function(){
+  const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')})},{threshold:.08,rootMargin:'0px 0px -25px 0px'});
+  document.querySelectorAll('.reveal,.rl,.rr,.rs').forEach(el=>obs.observe(el));
+})();
+
+/* SCROLL TOP */
+window.addEventListener('scroll',()=>document.getElementById('st').classList.toggle('show',window.scrollY>420));
+
+/* SHARE */
+function shareInvite(){
+  const txt='💍 Wedding Invitation\n\nK. Vignesh & B. Pavithra\n\n📅 Thursday, 4th June 2026 · Puducherry\n\n🪔 Ceremony: 7:30–9:00 AM\nShree Sengazhuneer Amman Temple, Veerampatinam\n\n🌹 Reception: 7:30–9:30 PM\nBoobalan Thangamani Tirumana Mandapam, Ariyankuppam\n\nWe look forward to celebrating with you! ❤️';
+  if(navigator.share)navigator.share({title:'Vignesh & Pavithra Wedding',text:txt}).catch(()=>{});
+  else navigator.clipboard.writeText(txt).then(()=>{
+    const b=document.querySelector('.share-btn');const orig=b.innerHTML;
+    b.innerHTML='✓  Copied to Clipboard!';b.style.background='linear-gradient(135deg,#2d6a4f,#52b788)';
+    setTimeout(()=>{b.innerHTML=orig;b.style.background=''},2500);
+  });
+}
+
+/* SPARKLE on tap */
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.card')&&!e.target.closest('.hero')&&!e.target.closest('.wish'))return;
+  const syms=['✦','✧','⋆','✵','✸'];const cols=['#B8892A','#D4A84B','#E8A5B0','#C4697A','#8FAF84'];
+  for(let i=0;i<6;i++){
+    const sp=document.createElement('div');sp.className='sp';
+    const a=Math.random()*Math.PI*2,d=Math.random()*50+15;
+    sp.textContent=syms[Math.floor(Math.random()*syms.length)];
+    Object.assign(sp.style,{left:e.clientX+Math.cos(a)*d+'px',top:e.clientY+Math.sin(a)*d+'px',fontSize:Math.random()*9+7+'px',color:cols[Math.floor(Math.random()*cols.length)],animationDuration:Math.random()*.35+.5+'s'});
+    document.body.appendChild(sp);setTimeout(()=>sp.remove(),850);
+  }
+});
+</script>
+</body>
+</html>
